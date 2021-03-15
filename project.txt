@@ -1,0 +1,10 @@
+
+    Pomodoro
+    1 - incrementar minutos cronometro
+    2 - incrementar minutos pausa
+    3 - incrementar sessões
+    
+    Componentes:
+    1 - PomCountDown
+    2 - PauseCountdown
+    3 - SessionCount
