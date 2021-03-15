@@ -5,10 +5,65 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background:#333853;
+  background:var(--default-bg);
 }
 
 .container h1{
   font-weight: 700;
   font-size: 4.5rem;
+  margin-bottom:3rem;
+}
+
+/** COUNTERS ============================ */
+
+.countersSection{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width:100vw;
+  max-width:800px;
+}
+
+.counter{
+  display: grid;
+  grid-template-columns:1fr 4fr;
+}
+
+.counter div{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  padding:0 .5rem;
+}
+
+.counter div img{
+  margin-bottom:1rem;
+  transform: translateY(-30%);
+}
+
+.counter strong{
+  background: var(--item-bg);
+  box-shadow: var(--item-shadow);
+  padding:.75rem 0;
+  font-size: 6.25rem;
+  border-radius:1rem;
+  text-align: center;
+}
+
+.counter h2{
+  margin-top:.5rem;
+  text-align: center;
+}
+
+.buttonContinue{
+  background: var(--item-bg);
+  padding:1rem 2rem;
+  box-shadow: var(--item-shadow);
+  border:none;
+  border-radius:1rem;
+  color: var(--text-color);
+  font-size:2.25rem;
+  margin-top: 4rem;
+  font-weight: 700;
 }
