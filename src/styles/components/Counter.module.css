@@ -1,0 +1,32 @@
+
+.counter{
+    display: grid;
+    grid-template-columns:1fr 4fr;
+  }
+  
+  .counter div{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    padding:0 .5rem;
+  }
+  
+  .counter div img{
+    margin-bottom:1rem;
+    transform: translateY(-30%);
+  }
+  
+  .counter strong{
+    background: var(--item-bg);
+    box-shadow: var(--item-shadow);
+    padding:.75rem 0;
+    font-size: 6.25rem;
+    border-radius:1rem;
+    text-align: center;
+  }
+  
+  .counter h2{
+    margin-top:.5rem;
+    text-align: center;
+  }
