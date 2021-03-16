@@ -9,9 +9,13 @@
 }
 
 .container h1{
-  font-weight: 700;
+  font-weight: 400;
   font-size: 4rem;
-  margin-bottom:3rem;
+  margin-bottom:4rem;
+}
+
+.container h1 img{
+  margin-right:.75rem;
 }
 
 /** COUNTERS ============================ */
@@ -20,8 +24,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  width:100vw;
-  max-width:800px;
 }
 
 .buttonContinue{
@@ -32,6 +34,13 @@
   border-radius:1rem;
   color: var(--text-color);
   font-size:2.25rem;
-  margin-top: 4rem;
+  margin-top: 5rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.buttonContinue img{
+  margin-left:.5rem;
+  transform: translateY(2px);
 }

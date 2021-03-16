@@ -1,0 +1,57 @@
+
+.continueContainer{
+    padding:3rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.continueContainer header{
+    display: flex;
+    justify-content: space-between;
+}
+.continueContainer header a{
+    display: flex;
+    align-items: center;
+    border-radius:.5rem;
+    padding:1rem 2rem;
+    font-weight:700;
+}
+
+.continueContainer section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:4rem 0;
+}
+
+.continueContainer section > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:1rem;
+}
+
+.CountValue{
+    border-radius: 100%;
+    padding:5.5rem 3rem;
+    font-size:3rem;
+}
+
+.round1{
+    color:#219653;
+}
+
+.roundCount{
+    display: block;
+    float: left;
+    margin-right:3px;
+    width:10px;
+    height:10px;
+    background: var(--item-bg);
+    border-radius:10px;
+}
+
+.roundMark{
+    background: #219653;
+}

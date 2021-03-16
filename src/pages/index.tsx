@@ -1,11 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/pages/Home.module.css'
 import Counter from '../components/Counter'
-
-interface CounterProps{
-  value: number;
-  title: string;
-}
 
 export default function Home() {
 
@@ -17,17 +12,21 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/> 
       </Head>
       <main className={styles.container}>
-        <h1>Pomodoro</h1>
+        <h1>
+          <img src="./icons/clock.svg" alt="Pomodoro clock"/>
+          Pomodoro
+        </h1>
 
-        <section className={styles.countersSection}>
+        <section className={`${styles.countersSection} center-container`}>
           <Counter value={25} title="Trabalho" />
           <Counter value={5} title="Pausa" />
           <Counter value={3} title="Sessões" />
         </section>
 
-        <button type="button" className={styles.buttonContinue}>
+        <a href="/continue" className={styles.buttonContinue}>
           Continuar
-        </button>
+          <img src="./icons/play-fill.svg" alt="Continuar"/>
+        </a>
       </main>
     </div>
   )
