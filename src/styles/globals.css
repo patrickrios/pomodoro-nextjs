@@ -1,8 +1,12 @@
 :root{
   --default-bg:#333853;
   --item-bg:#3C4262;
+  --item-bg-hover:#464d6e;
   --text-color:#B6B9CA;
   --item-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
+
+  --green:#219653;
+  --yellow:#F2C94C;
 }
 
 html,

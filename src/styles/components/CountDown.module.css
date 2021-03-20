@@ -1,0 +1,62 @@
+.CountDown{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.CountDown > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:1rem;
+}
+
+.CountDown h3{
+    font-size:3rem;
+    margin-bottom:1rem;
+}
+
+.CountValue{
+    border-radius: 100%;
+    padding:5.5rem 3rem;
+    font-size:3rem;
+}
+
+.titleGreen{
+    color:var(--green);
+}
+
+.titleYellow{
+    color: var(--yellow);
+}
+
+.roundCount{
+    display: block;
+    float: left;
+    margin-right:4px;
+    width:15px;
+    height:15px;
+    background: var(--item-bg);
+    border-radius:15px;
+}
+
+.roundGreen{
+    background: var(--green);
+}
+
+.roundYellow{
+    background: var(--yellow);
+}
+
+.playButton{
+    padding:1rem 1.5rem;
+    border-radius:.7rem;
+    margin-top:1.3rem;
+    cursor: pointer;
+    transition:.2s ease-in-out;
+}
+
+.playButton:hover{
+    background: var(--item-bg-hover);
+}
