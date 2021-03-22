@@ -2,7 +2,6 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import Continue from "../components/Continue";
 import Homepage from "../components/Homepage";
 
-
 interface AppContextData{
     content: ReactNode;
     loadHome: () => void;
@@ -27,11 +26,6 @@ export default function AppProvider( {children}: AppProviderProps){
     function loadCountdown(){
         setContent(<Continue/>)
     }
-
-    useEffect( ()=>{
-        console.log('change to -> ')
-    }, [content])
-
 
     return(
         <AppContext.Provider 
