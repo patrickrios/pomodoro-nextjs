@@ -23,16 +23,20 @@ interface PomodoroProviderProps{
 
 export const PomodoroContext = createContext({} as PomodoroContextData)
 
+const MIN_WORK  = 25
+const MIN_PAUSE = 5
+const MIN_SESSION = 3
+
 export function PomodoroProvider( {children} : PomodoroProviderProps ){
 
-    const [work, setWork] = useState( recover('work') || 25)
-    const [pause, setPause] = useState(recover('pause') || 5)
-    const [session, setSession] = useState( recover('session') || 3)
+    const [work, setWork] = useState( recover('work') || MIN_WORK)
+    const [pause, setPause] = useState(recover('pause') || MIN_PAUSE)
+    const [session, setSession] = useState( recover('session') || MIN_SESSION)
     const [currentSession, setCurrentSession] = useState(1)
     const [isPause, setIsPause] = useState(false)
     const [backgroundStyle, setBackground] = useState("defaultBG")
 
-    /** Values controllers */
+    /** Control values */
     function increaseWork() {
         setWork( work + 1)
     }

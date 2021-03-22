@@ -1,10 +1,14 @@
 import '../styles/globals.css'
-import { PomodoroContext, PomodoroProvider } from '../providers/PomodoroProvider'
+import { PomodoroProvider } from '../providers/PomodoroProvider'
+import AppProvider from '../providers/AppProvider'
+
 
 function MyApp({ Component, pageProps }) {
   return  (
     <PomodoroProvider>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
     </PomodoroProvider>
   )
 }

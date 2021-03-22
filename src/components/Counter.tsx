@@ -1,5 +1,3 @@
-import { useContext, useState } from 'react'
-import { PomodoroContext } from '../providers/PomodoroProvider'
 import styles from '../styles/components/Counter.module.css'
 
 interface CounterProps{
@@ -21,6 +19,6 @@ export default function Counter({value, title, increase, decrease}:CounterProps)
               <strong>{value}</strong>
               <h2>{title}</h2>
             </div>
-          </div>
+        </div>
     )
 }
