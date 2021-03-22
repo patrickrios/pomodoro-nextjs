@@ -1,8 +1,12 @@
 import '../styles/globals.css'
-import { PomodoroContext } from '../providers/PomodoroProvider'
+import { PomodoroContext, PomodoroProvider } from '../providers/PomodoroProvider'
 
 function MyApp({ Component, pageProps }) {
-  return  <Component {...pageProps} />
+  return  (
+    <PomodoroProvider>
+      <Component {...pageProps} />
+    </PomodoroProvider>
+  )
 }
 
 export default MyApp

@@ -13,9 +13,6 @@ html,
 body {
   font-family: "Roboto", sans-serif;
   color:var(--text-color);
-  background: var(--default-bg);
-  display: flex;
-  justify-content: center;
 }
 
 a {
@@ -38,9 +35,28 @@ button{
 .center-container{
   width:100vw;
   max-width:800px;
+  display: flex;
+  justify-content: center;
+
 }
 
 .default-item{
-  background: var(--item-bg);
+  background: rgba(255,255,255,.1);
   box-shadow: var(--item-shadow);
+}
+
+.defaultBG{
+  background: var(--default-bg);
+}
+
+.defaultItemBG{
+  background: var(--item-bg);
+}
+
+.greenBG{
+  background: var(--green);
+}
+
+.yellowBG{
+  background: var(--yellow);
 }

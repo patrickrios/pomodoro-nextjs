@@ -23,12 +23,8 @@
     font-size:3rem;
 }
 
-.titleGreen{
-    color:var(--green);
-}
-
-.titleYellow{
-    color: var(--yellow);
+.title{
+    color:#eee;
 }
 
 .roundCount{
