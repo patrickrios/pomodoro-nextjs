@@ -14,7 +14,8 @@ interface PomodoroContextData{
     decreasePause: () => void;
     increaseSession: () => void;
     decreaseSession: () => void;
-    greenBG: () => void;
+    increaseCurrentSession: () => void;
+    defineAsPause: () => void;
 }
 
 interface PomodoroProviderProps{
@@ -33,7 +34,7 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
     const [pause, setPause] = useState(recover('pause') || MIN_PAUSE)
     const [session, setSession] = useState( recover('session') || MIN_SESSION)
     const [currentSession, setCurrentSession] = useState(1)
-    const [isPause, setIsPause] = useState(false)
+    const [isPause, definePause] = useState(false)
     const [backgroundStyle, setBackground] = useState("defaultBG")
 
     /** Control values */
@@ -61,6 +62,14 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
         (session > 1) && setSession(session-1)
     }
 
+    const defineAsPause = () => {
+        definePause( !isPause )
+    }
+
+    const increaseCurrentSession = () =>{
+        setCurrentSession( currentSession + 1)
+    }
+
     /** Storing datas */
     useEffect( ()=>{
         Cookie.set('work', String(work))
@@ -70,11 +79,6 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
 
     function recover(key: string){
         return Number(Cookie.get(key))
-    }
-
-    /** Styles controller */
-    function greenBG(){
-        setBackground("greenBG")
     }
 
     return(
@@ -92,7 +96,8 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
                 decreasePause,
                 increaseSession,
                 decreaseSession,
-                greenBG
+                increaseCurrentSession,
+                defineAsPause
             }}>
             {children}
         </PomodoroContext.Provider>
