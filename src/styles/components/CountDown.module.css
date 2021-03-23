@@ -27,14 +27,17 @@
     color:#eee;
 }
 
-.roundCount{
+.roundCount, .roundGreen, .roundYellow{
     display: block;
     float: left;
     margin-right:4px;
     width:15px;
     height:15px;
-    background: var(--item-bg);
     border-radius:15px;
+}
+
+.roundCount{
+    background: var(--item-bg);
 }
 
 .roundGreen{

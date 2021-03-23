@@ -23,3 +23,7 @@
 .continueContainer section{
     padding:4rem 0;
 }
+
+.homeButton{
+    cursor: pointer;
+}

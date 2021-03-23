@@ -16,7 +16,9 @@ export default function Counter({value, title, increase, decrease}:CounterProps)
               <img src="./icons/down.svg" onClick={decrease} alt="Incrementar"/>
             </div>
             <div>
-              <strong>{value}</strong>
+              <strong>
+                {value}
+              </strong>
               <h2>{title}</h2>
             </div>
         </div>

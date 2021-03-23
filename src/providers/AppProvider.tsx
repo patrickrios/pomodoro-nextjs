@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import Continue from "../components/Continue";
 import Homepage from "../components/Homepage";
 
@@ -6,7 +6,6 @@ interface AppContextData{
     content: ReactNode;
     loadHome: () => void;
     loadCountdown: ()=> void;
-
 }
 
 interface AppProviderProps{

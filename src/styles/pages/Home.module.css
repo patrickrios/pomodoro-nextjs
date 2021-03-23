@@ -38,6 +38,11 @@
   display: flex;
   align-items: center;
   opacity: var(--dark-opacity);
+  cursor: pointer;
+}
+
+.buttonContinue:hover{
+  opacity:.9;
 }
 
 .buttonContinue img{
