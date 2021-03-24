@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import Cookie from 'js-cookie'
+import { AppContext } from "./AppProvider";
 
 interface PomodoroContextData{
     work: number;
@@ -7,7 +8,6 @@ interface PomodoroContextData{
     session: number;
     currentSession: number;
     isPause: boolean;
-    backgroundStyle: string;
     increaseWork: () => void;
     decreaseWork: () => void;
     increasePause: () => void;
@@ -15,7 +15,9 @@ interface PomodoroContextData{
     increaseSession: () => void;
     decreaseSession: () => void;
     increaseCurrentSession: () => void;
-    defineAsPause: () => void;
+    nextStep: () => void;
+    pomodoroHasFinished: () => boolean;
+    resetPomodoro: () => void;
 }
 
 interface PomodoroProviderProps{
@@ -35,7 +37,7 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
     const [session, setSession] = useState( recover('session') || MIN_SESSION)
     const [currentSession, setCurrentSession] = useState(1)
     const [isPause, definePause] = useState(false)
-    const [backgroundStyle, setBackground] = useState("defaultBG")
+    
 
     /** Control values */
     function increaseWork() {
@@ -62,19 +64,28 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
         (session > 1) && setSession(session-1)
     }
 
-    const defineAsPause = () => {
-        definePause( !isPause )
+    const nextStep = () => {
+        definePause( (prevState) => !prevState )
     }
 
     const increaseCurrentSession = () =>{
         setCurrentSession( currentSession + 1)
     }
 
+    const pomodoroHasFinished = () =>{
+        return (currentSession === session+1)
+    }
+
+    const resetPomodoro = ()=>{
+        setCurrentSession(1)
+        definePause(false)
+    }
+
     /** Storing datas */
     useEffect( ()=>{
-        Cookie.set('work', String(work))
-        Cookie.set('pause', String(pause))
-        Cookie.set('session', String(session))
+        Cookie.set('work', String(work), {sameSite: 'strict'})
+        Cookie.set('pause', String(pause), {sameSite: 'strict'})
+        Cookie.set('session', String(session), {sameSite: 'strict'})
     }, [work, pause, session])
 
     function recover(key: string){
@@ -89,7 +100,6 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
                 session,
                 currentSession,
                 isPause,
-                backgroundStyle,
                 increaseWork,
                 decreaseWork,
                 increasePause,
@@ -97,7 +107,9 @@ export function PomodoroProvider( {children} : PomodoroProviderProps ){
                 increaseSession,
                 decreaseSession,
                 increaseCurrentSession,
-                defineAsPause
+                nextStep,
+                pomodoroHasFinished,
+                resetPomodoro
             }}>
             {children}
         </PomodoroContext.Provider>

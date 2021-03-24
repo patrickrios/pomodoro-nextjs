@@ -5,11 +5,10 @@ import { AppContext } from '../providers/AppProvider'
 
 export default function Home() {
 
-  const { backgroundStyle} = useContext(PomodoroContext)
-  const {content} = useContext(AppContext)
+  const {content, backgroundColor} = useContext(AppContext)
 
   return (
-    <div className={backgroundStyle}>
+    <div className={backgroundColor}>
         <Head>
           <title>Pomodoro | DevChallange</title>
           <link rel="preconnect" href="https://fonts.gstatic.com"/>
