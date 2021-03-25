@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { CountDownContext } from '../providers/CountDownProvider'
 import  styles from '../styles/components/CountDown.module.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -30,7 +30,7 @@ export default function CountDown(){
 
     return(
         <div className={styles.CountDown}>
-            <strong className={`${styles.CountValue} default-item`}>
+            <div className={`${styles.CountValue} default-item`}>
                 <CountdownCircleTimer
                     isPlaying={isPlaying}
                     key={key}
@@ -47,7 +47,7 @@ export default function CountDown(){
                 >
                     {children}
                 </CountdownCircleTimer>
-            </strong>
+            </div>
             <div>
                 <h3 className={stepColor}>
                     { title }

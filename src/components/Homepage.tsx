@@ -3,11 +3,16 @@ import { AppContext } from "../providers/AppProvider"
 
 import Counters from "../components/CounterWrapper";
 import styles from '../styles/pages/Home.module.css'
+import Modal from "./Modal";
 
 export default function Homepage(){
-    const {loadCountdown} = useContext(AppContext)
+    const {
+      loadCountdown,
+      modal
+    } = useContext(AppContext)
     return(
       <div className={styles.container}>
+          {modal}
           <h1>
             Pomodoro
           </h1>

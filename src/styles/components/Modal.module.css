@@ -1,0 +1,31 @@
+
+.modal{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: var(--default-bg);
+    z-index:10;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal h2{
+    font-size: 3rem;
+}
+
+.modal p{
+    font-size: 1.25rem;
+    margin:1rem 0;
+}
+
+.modal button{
+    opacity:.75;
+    margin-top:1rem;
+}
+
+.modal button:hover{
+    opacity:1;
+}

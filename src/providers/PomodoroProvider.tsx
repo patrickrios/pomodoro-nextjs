@@ -1,6 +1,5 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import Cookie from 'js-cookie'
-import { AppContext } from "./AppProvider";
 
 interface PomodoroContextData{
     work: number;

@@ -32,7 +32,7 @@ export default function CountDownProvider( {children}: CountDownProps){
         resetPomodoro,
     } = useContext(PomodoroContext)
 
-    const { loadHome } = useContext(AppContext)
+    const { loadHome, toggleModal } = useContext(AppContext)
 
 
     const Datas = {
@@ -72,10 +72,13 @@ export default function CountDownProvider( {children}: CountDownProps){
         },
         done(){
             nextStep()
-            this.notify()
             if( pomodoroHasFinished() ){
                 resetPomodoro()
                 loadHome()
+                toggleModal()
+                new Audio('/alarm.mp3').play()
+            }else{
+                this.notify()
             }
         },
         isCounting(){

@@ -26,6 +26,12 @@ button{
   font-family: "Roboto", sans-serif;
   color: var(--text-color);
   border:none;
+  border-radius:.3rem;
+  box-shadow: var(--item-shadow);
+  padding:1rem 1.3rem;
+  background: var(--item-bg);
+  font-size:1rem;
+  cursor: pointer;
 }
 
 * {

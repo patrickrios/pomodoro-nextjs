@@ -1,11 +1,13 @@
 
     Pomodoro
-    1 - incrementar minutos cronometro
-    2 - incrementar minutos pausa
-    3 - incrementar sessões
-    4 - continuar Pomodoro
+    [x] incrementar minutos cronometro
+    [x] incrementar minutos pausa
+    [x] incrementar sessões
+    [x] continuar Pomodoro
 
     Componentes:
-    1 - setCount
-    2 - countDown
-    3 - SessionCount
+    [x] setCount
+    [x] countDown
+    [x] SessionCount
+
+    [ ] Modal pomodoro completo
