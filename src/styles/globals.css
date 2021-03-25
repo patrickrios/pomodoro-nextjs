@@ -62,3 +62,12 @@ button{
 .yellowBG{
   background: var(--yellow);
 }
+
+
+.greenText{
+  color: var(--green)
+}
+
+.yellowText{
+  color: var(--yellow);
+}

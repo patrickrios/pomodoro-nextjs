@@ -19,15 +19,13 @@
 
 .CountValue{
     border-radius: 100%;
-    padding:5.5rem 3rem;
+    padding:1rem;
     font-size:3rem;
 }
 
-.title{
-    color:#eee;
-}
-
-.roundCount, .roundGreen, .roundYellow{
+.roundCount, 
+.roundGreen, 
+.roundYellow{
     display: block;
     float: left;
     margin-right:4px;

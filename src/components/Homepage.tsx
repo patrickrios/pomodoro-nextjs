@@ -9,7 +9,6 @@ export default function Homepage(){
     return(
       <div className={styles.container}>
           <h1>
-            <img src="./icons/clock.svg" alt="Pomodoro clock"/>
             Pomodoro
           </h1>
 

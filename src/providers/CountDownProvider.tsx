@@ -4,21 +4,20 @@ import { AppContext } from "./AppProvider";
 import { PomodoroContext } from "./PomodoroProvider";
 
 interface CountDownDatas{
-    minLeft: string;
-    minRight: string;
-    secLeft: string;
-    secRight: string;
+    isPlaying: boolean;
     title: string;
     sessionProgress: object;
     playIcon: string;
+    stepColor: string;
+    circleColor: string;
+    time: number;
     startCountDown: () =>void;
+    countDownComplete: () => void;
 }
 interface CountDownProps{
     children: ReactNode;
 }
 export const CountDownContext = createContext({} as CountDownDatas)
-
-let countdownTimeout: NodeJS.Timeout
 
 export default function CountDownProvider( {children}: CountDownProps){
     const {
@@ -36,18 +35,24 @@ export default function CountDownProvider( {children}: CountDownProps){
     const { loadHome } = useContext(AppContext)
 
 
-    /** Tempo */
-    const[time, setTime] = useState( initTime() )
-    
-    let minutes = Math.floor( time/60 )
-    let seconds = time % 60
-
-    const [minLeft, minRight] = String(minutes).padStart(2,'0').split('')
-    const [secLeft, secRight] = String(seconds).padStart(2,'0').split('')
-
-    function initTime(){
-        return ((isPause) ? pause : work)*60
+    const Datas = {
+        getTime(){
+            return ((isPause) ? pause : work)*60
+        },
+        getStepColor(){
+            return (isPause) ? 'yellowText' : 'greenText'
+        },
+        getCircleColor(){
+            return (isPause) ? '#F2C94C' : '#219653'
+        },
+        getCompleteMessage(){
+            return isPause 
+                ? ['Ao Trabalho!', 'Foque na sua tarefa para finalizá-la.'] 
+                : ['Bom trabalho!', 'Agora descanse um pouco.']
+        }
     }
+    const[time, setTime] = useState( Datas.getTime() )
+
 
     /** Controla o cronômetro */
     const CountDown = {
@@ -57,12 +62,13 @@ export default function CountDownProvider( {children}: CountDownProps){
         start(){
             startPlaying( (prevState) => !prevState )
         },
-        reset(){    
-            clearTimeout(countdownTimeout)
-            setTime( initTime() )
-            setTitle( this.initTitle() )
+        reset(){
+            setStepColor( Datas.getStepColor() )
+            setCircleColor( Datas.getCircleColor() )
+            setTime( Datas.getTime() )
+            setTitle( this.setTitle() )
             setProgress( Progress.render() )
-            startPlaying( (prevState) => !prevState )
+            startPlaying( false )
         },
         done(){
             nextStep()
@@ -78,52 +84,46 @@ export default function CountDownProvider( {children}: CountDownProps){
         isFinished(){
             return isPlaying && time === 0
         },
-        descrease(){
-            countdownTimeout = setTimeout( 
-                () => {
-                    setTime( (prevState) => prevState-1)
-                }, 1000
-            )
-        },
         notify(){
             new Audio('/alarm.mp3').play()
-                if(Notification.permission === 'granted'){
-                    new Notification( `Concluido`, {
-                        body: `Inicie um novo ciclo`
+            if(Notification.permission === 'granted'){
+                let message = Datas.getCompleteMessage()
+                new Notification( message[0], {
+                    body: message[1]
                 })
             }
         }
     }
     
     /** Controla execução */
-    const [isPlaying, startPlaying] = useState(true)
+    const [isPlaying, startPlaying] = useState(false)
     const [playIcon,  setIcon] = useState('/icons/play.svg')
     const [title, setTitle]    = useState( CountDown.setTitle() )
+    const [stepColor, setStepColor] = useState( Datas.getStepColor() )
+    const [circleColor, setCircleColor] = useState( Datas.getCircleColor() )
     const startCountDown = CountDown.start
 
-    
+
+    /* Controla o ícone do play */
     useEffect( ()=>{
-        (isPlaying) ? setIcon('/icons/pause.svg') : setIcon('/icons/play.svg')
+        (isPlaying) 
+            ? setIcon('/icons/pause.svg') 
+            : setIcon('/icons/play.svg')
     },[isPlaying])
 
 
-    useEffect( ()=> {
-        if( CountDown.isCounting()){ 
-            CountDown.descrease()
-        }
-        else if( CountDown.isFinished()){
-            CountDown.done()
-        }
-    }, [isPlaying, time])
-
-
-    useEffect( ()=> {
+    /* Controla a etapa */
+    useEffect( ()=>{
         CountDown.reset()
-        if( isPause ){
+        if( isPause){
             increaseCurrentSession()
-        }
-    },[isPause])
+        } 
+    }, [isPause])
 
+
+    const countDownComplete = () => {
+        CountDown.done()
+    }
 
     /** Progresso */
     const Progress = {
@@ -147,14 +147,15 @@ export default function CountDownProvider( {children}: CountDownProps){
     return(
         <CountDownContext.Provider 
             value={{
-                minLeft,
-                minRight,
-                secLeft,
-                secRight,
+                isPlaying,
                 title,
                 sessionProgress,
                 playIcon,
-                startCountDown
+                stepColor,
+                circleColor,
+                time,
+                startCountDown,
+                countDownComplete
             }}
         >
             {children}

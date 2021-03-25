@@ -7,8 +7,8 @@ interface AppContextData{
     backgroundColor: string;
     loadHome: () => void;
     loadCountdown: ()=> void;
+    defaultBG: ()=>void;
 }
-
 interface AppProviderProps{
     children: ReactNode;
 }
@@ -20,12 +20,15 @@ export default function AppProvider( {children}: AppProviderProps){
     const [content, setContent] = useState(<Homepage/>)
     const [backgroundColor, setBackground] = useState("defaultBG")
 
-    function loadHome(){
+    const loadHome = () =>{
+        defaultBG()
         setContent(<Homepage/>)
     }
-
-    function loadCountdown(){
+    const loadCountdown = () =>{
         setContent(<Continue/>)
+    }
+    const defaultBG = () =>{
+        setBackground('defaultBG')
     }
 
     return(
@@ -34,7 +37,8 @@ export default function AppProvider( {children}: AppProviderProps){
                 content,
                 backgroundColor,
                 loadHome,
-                loadCountdown
+                loadCountdown,
+                defaultBG
             }}
         >
             {children}
