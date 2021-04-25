@@ -10,4 +10,4 @@
     [x] countDown
     [x] SessionCount
 
-    [ ] Modal pomodoro completo
+    [x] Modal pomodoro completo

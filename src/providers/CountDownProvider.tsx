@@ -2,6 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { RoundDisabled, RoundGreen, RoundYellow } from "../components/Rounds";
 import { AppContext } from "./AppProvider";
 import { PomodoroContext } from "./PomodoroProvider";
+import notifications from '../../notifications.json'
 
 interface CountDownDatas{
     isPlaying: boolean;
@@ -47,8 +48,8 @@ export default function CountDownProvider( {children}: CountDownProps){
         },
         getCompleteMessage(){
             return isPause 
-                ? ['Ao Trabalho!', 'Foque na sua tarefa para finalizá-la.'] 
-                : ['Bom trabalho!', 'Agora descanse um pouco.']
+                ? ['De volta ao trabalho...', 'Foque na sua tarefa para finalizá-la.'] 
+                : ['Bom trabalho...', 'Tire um tempo para descansar.']
         }
     }
     const[time, setTime] = useState( Datas.getTime() )
@@ -76,9 +77,9 @@ export default function CountDownProvider( {children}: CountDownProps){
                 resetPomodoro()
                 loadHome()
                 toggleModal()
-                new Audio('/alarm.mp3').play()
+                this.notify(['Parabéns', 'Pomodoro finalizado'])
             }else{
-                this.notify()
+                this.countdownNotify()
             }
         },
         isCounting(){
@@ -87,12 +88,19 @@ export default function CountDownProvider( {children}: CountDownProps){
         isFinished(){
             return isPlaying && time === 0
         },
-        notify(){
+        countdownNotify(){
+            let index  = (isPause) ? 1 : 0
+            let length = notifications[index].length
+            let random = Math.floor( Math.random() * length)
+            let messages = notifications[index][random]
+            this.notify([messages.Title, messages.description])
+        },
+        notify(message: Array<String>){
             new Audio('/alarm.mp3').play()
             if(Notification.permission === 'granted'){
-                let message = Datas.getCompleteMessage()
-                new Notification( message[0], {
-                    body: message[1]
+            
+                new Notification( String(message[0]), {
+                    body: String(message[1])
                 })
             }
         }

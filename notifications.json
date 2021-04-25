@@ -1,0 +1,46 @@
+[
+    [
+        {
+            "Title": "Bom Trabalho!",
+            "description": "Agora aproveite sua pausa..."
+        },
+        {
+            "Title": "Muito bom!",
+            "description": "Agoran tire um tempo para descansar..."
+        },
+        {
+            "Title": "Quanta produtividade",
+            "description": "Você merece uma pausa..."
+        },
+        {
+            "Title": "Está indo muito bem!",
+            "description": "Agora, vá beber uma água e se alongue um pouco..."
+        },
+        {
+            "Title": "Trabalho intenso é bom...",
+            "description": "... e com uma pausa é perfeito!"
+        }
+    ],
+    [
+        {
+            "Title": "É hora do show!",
+            "description": "Manda ver no trabalho para terminá-lo."
+        },
+        {
+            "Title": "Ao trabalho",
+            "description": "Foque no trabalho, para terminá-lo em breve."
+        },
+        {
+            "Title": "Bom ter você de volta.",
+            "description": "Seu trabalho está esperando pra ser finalizado."
+        },
+        {
+            "Title": "Hora do trabalho bb.",
+            "description": "O trabalho te aguarda pra ser concluído."
+        },
+        {
+            "Title": "Oi sumido.",
+            "description": "Seu trabalho está esperando você voltar."
+        }
+    ]
+]
